@@ -18,6 +18,7 @@ public class UserController {
 
     @GetMapping(value = "/test")
     public ResponseEntity<String> getPage(){
+
         return new ResponseEntity<String>("Welcome", HttpStatus.OK);
     }
 
