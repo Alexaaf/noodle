@@ -21,10 +21,10 @@ public class UserController {
         return new ResponseEntity<String>("Welcome", HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{users}")
+    @GetMapping(value = "/all")
     public List<User> getUsers(){
-        userService.findAll();
-        return null;
+      return  userService.findAll();
+
     }
 //
 //    @PostMapping(value = "/save")
