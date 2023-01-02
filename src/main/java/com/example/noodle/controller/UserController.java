@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
 
    @Autowired
@@ -24,6 +25,20 @@ public class UserController {
     @GetMapping(value = "/all")
     public List<User> getUsers(){
       return  userService.findAll();
+
+    }
+
+    @PostMapping (value = "/addUser")
+    public String addUser(@RequestBody User user)
+    {
+        try{
+            userService.saveUser(user);
+            return "New user added";
+        }catch (Exception e)
+        {
+            System.out.println(e.toString());
+            return e.toString();
+        }
 
     }
 //
