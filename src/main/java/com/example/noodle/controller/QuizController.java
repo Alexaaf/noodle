@@ -1,5 +1,6 @@
 package com.example.noodle.controller;
 
+import com.example.noodle.model.Answers;
 import com.example.noodle.model.Quiz;
 import com.example.noodle.model.User;
 import com.example.noodle.service.QuizService;
@@ -9,9 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-    @RestController
+@RestController
     @RequestMapping("/quiz")
     @CrossOrigin
     public class QuizController {
@@ -40,4 +43,18 @@ import java.util.List;
             }
 
         }
+
+        @RequestMapping (value = "findQuizByCourse/{course}")
+        public List<Quiz> getQuizByCourse(@PathVariable String course){
+            List<Quiz> list = quizService.findByCourse(course);
+            Random rand = new Random();
+            List<Quiz> q = new ArrayList<>();
+            q.add(list.get(rand.nextInt(list.size())));
+            return q;
+        }
+
+    @RequestMapping (value = "getLastQuiz")
+    public int getLastQuiz(){
+        return quizService.getLastQuiz();
+    }
     }

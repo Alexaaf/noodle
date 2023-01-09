@@ -45,4 +45,9 @@ public class GradeController {
         }
 
     }
+
+    @RequestMapping (value = "findByStudentId/{id}/{course}")
+    public List<Grade> getGradeByStudentId(@PathVariable String id,@PathVariable String course){
+        return gradeService.findGradeByStudentId(id,course);
+    }
 }

@@ -23,4 +23,8 @@ public class GradeService implements IGradeService {
     public Grade saveGrade(Grade grade) {
         return gradeRepository.save(grade);
     }
+
+    public List <Grade> findGradeByStudentId(String id, String course) {
+        return gradeRepository.findGradeByStudentId(id, course);
+    }
 }

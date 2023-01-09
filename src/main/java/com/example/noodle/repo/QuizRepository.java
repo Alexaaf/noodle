@@ -1,5 +1,6 @@
 package com.example.noodle.repo;
 
+import com.example.noodle.model.Answers;
 import com.example.noodle.model.Quiz;
 import com.example.noodle.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
