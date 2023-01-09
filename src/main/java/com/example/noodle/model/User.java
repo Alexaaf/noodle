@@ -14,13 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class User {
     @Id
-    @SequenceGenerator(name = "user_sequence",
-            sequenceName = "user_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "username", nullable = false, unique = true )
-    private String username;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -29,5 +24,12 @@ public class User {
     private String password;
 
     @Column(name = "role", nullable = true)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private ERole role;
+
+    public User(String email, String password, ERole role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }

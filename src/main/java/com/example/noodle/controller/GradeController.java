@@ -4,31 +4,35 @@ import com.example.noodle.model.Grade;
 import com.example.noodle.model.User;
 import com.example.noodle.service.GradeService;
 import com.example.noodle.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/grade")
+@RequestMapping("/grades")
 @CrossOrigin
+@AllArgsConstructor
 public class GradeController {
-    @Autowired
+
     GradeService gradeService;
 
-    @GetMapping(value = "/test")
-    public ResponseEntity<String> getPage(){
-        return new ResponseEntity<String>("Welcome", HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<String> getPage(){
+//        return new ResponseEntity<String>("Welcome", HttpStatus.OK);
+//    }
 
-    @GetMapping(value = "/allGrades")
+    @GetMapping
     public List<Grade> getGrades(){
+        System.out.println("grades");
         return  gradeService.findAll();
     }
 
-    @PostMapping(value = "/addGrade")
+    @PostMapping
     public String addGrade(@RequestBody Grade grade)
     {
         try{

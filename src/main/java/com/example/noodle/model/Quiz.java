@@ -13,6 +13,7 @@ import javax.persistence.*;
     @NoArgsConstructor
     public class Quiz {
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
         @Column(name = "Question1", nullable = false)
