@@ -1,8 +1,8 @@
 package com.example.noodle.controller;
 
-import com.example.noodle.model.Grade;
+import com.example.noodle.model.Answers;
 import com.example.noodle.model.User;
-import com.example.noodle.service.GradeService;
+import com.example.noodle.service.AnswersService;
 import com.example.noodle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,28 +12,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/grade")
+@RequestMapping("/answers")
 @CrossOrigin
-public class GradeController {
+public class AnswersController {
+
     @Autowired
-    GradeService gradeService;
+    AnswersService answersService;
 
     @GetMapping(value = "/test")
     public ResponseEntity<String> getPage(){
         return new ResponseEntity<String>("Welcome", HttpStatus.OK);
     }
 
-    @GetMapping(value = "/allGrades")
-    public List<Grade> getGrades(){
-        return  gradeService.findAll();
+    @GetMapping(value = "/all")
+    public List<Answers> getAnswers(){
+        return  answersService.findAll();
     }
 
-    @PostMapping(value = "/addGrade")
-    public String addGrade(@RequestBody Grade grade)
+
+    @PostMapping(value = "/addAnswers")
+    public String addAnswers(@RequestBody Answers answers)
     {
         try{
-            gradeService.saveGrade(grade);
-            return "New grade added";
+            answersService.saveAnswers(answers);
+            return "New answers added";
         }catch (Exception e)
         {
             System.out.println(e.toString());
@@ -42,8 +44,9 @@ public class GradeController {
 
     }
 
-    @RequestMapping (value = "findByStudentId/{id}/{course}")
-    public List<Grade> getGradeByStudentId(@PathVariable String id,@PathVariable String course){
-        return gradeService.findGradeByStudentId(id,course);
+    @RequestMapping (value = "findByQuizId/{id}")
+    public List<Answers> getAnswersByQuizId(@PathVariable int id){
+        return answersService.findAnswersByQuizId(id);
     }
+
 }

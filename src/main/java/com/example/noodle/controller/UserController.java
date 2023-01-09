@@ -8,13 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
 @CrossOrigin
 public class UserController {
 
-   @Autowired
+    @Autowired
     UserService userService;
 
     @GetMapping(value = "/test")
@@ -48,16 +49,11 @@ public class UserController {
 //        return "Saved...";
 //    }
 //
-//    @PutMapping(value = "update/{id}")
-//    public String updateUser(@PathVariable long id, @RequestBody User user){
-//        User updatedUser = userRepo.findById(id).get();
-//        updatedUser.setId(user.getId());
-//        updatedUser.setUsername(user.getUsername());
-//        updatedUser.setPassword(user.getPassword());
-//        updatedUser.setRole(user.getRole());
-//        userRepo.save(updatedUser);
-//        return "Updated..";
-//    }
+    @RequestMapping (value = "findById/{id}")
+    public List<User> getUserById(@PathVariable Long id){
+        return userService.findById(id);
+    }
+
 //    @DeleteMapping(value = "/delete/{id}")
 //    public String deleteUser(@PathVariable long id){
 //        User deletedUser = userRepo.findById(id).get();

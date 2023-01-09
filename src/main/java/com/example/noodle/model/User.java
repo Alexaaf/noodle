@@ -30,4 +30,5 @@ public class User {
 
     @Column(name = "role", nullable = true)
     private String role;
+
 }
