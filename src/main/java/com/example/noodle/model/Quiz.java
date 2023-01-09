@@ -13,10 +13,7 @@ import javax.persistence.*;
     @NoArgsConstructor
     public class Quiz {
         @Id
-
-        @SequenceGenerator(name = "quiz_sequence",
-                sequenceName = "quiz_sequence", allocationSize = 1)
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quiz_sequence")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
         @Column(name = "Question1", nullable = false)

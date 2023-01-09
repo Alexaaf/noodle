@@ -2,17 +2,12 @@ package com.example.noodle.repo;
 
 import com.example.noodle.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long > {
+import java.util.Optional;
 
-    //Optional findById(String ID);
-    @Query("SELECT e FROM User e WHERE e.id = :id")
-    public List<User> findStudentById(@Param("id") long id);
-    @Override
-    User save (User user);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long > {
+    Optional<User> findUserByEmail(String email);
 }

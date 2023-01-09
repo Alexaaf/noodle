@@ -14,10 +14,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Grade {
     @Id
-    @SequenceGenerator(name = "grade_sequence",
-            sequenceName = "grade_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "grade_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "course", nullable = false )
     private String course;
 

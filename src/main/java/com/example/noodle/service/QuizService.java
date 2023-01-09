@@ -4,14 +4,16 @@ import com.example.noodle.model.Answers;
 import com.example.noodle.model.Quiz;
 import com.example.noodle.model.User;
 import com.example.noodle.repo.QuizRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class QuizService {
-    @Autowired
+
     QuizRepository quizRepository;
 
     public List<Quiz> findAll(){
